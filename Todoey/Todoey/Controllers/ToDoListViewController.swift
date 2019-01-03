@@ -43,7 +43,7 @@ class ToDoListViewController: UITableViewController {
     }
 
     // MARK - TableView Delegate Methods
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         items[indexPath.row].done = !items[indexPath.row].done
         tableView.reloadData()
         tableView.deselectRow(at: indexPath, animated: true)
