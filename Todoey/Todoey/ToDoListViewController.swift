@@ -17,6 +17,7 @@ class ToDoListViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    // MARK - TableView Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
@@ -25,6 +26,17 @@ class ToDoListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
         cell.textLabel?.text = items[indexPath.row]
         return cell
+    }
+
+    // MARK - TableView Delegate Methods
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+//        print(items[indexPath.row])
+        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        } else {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
